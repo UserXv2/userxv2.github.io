@@ -1,0 +1,139 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xiaogeng's Homepage</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="top-navigation">
+      <a href="#" class="navigation-link navigation-link--active">Home</a>
+      <a href="#" class="navigation-link">Others</a>
+    </nav>
+
+    <button class="theme-toggle-button" aria-label="switch">☼</button>
+
+    <main class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge">Hello, I am also go by <b>Aiden</b></div>
+
+        <div class="profile-avatar-wrapper">
+          <!-- <img
+            class="profile-avatar-image"
+            src=""
+            alt="avatar"
+          /> -->
+          <div class="tux-container">
+        <!-- INLINE SVG -->
+        <svg id="tuxSvg" viewBox="0 0 512 512">
+
+          <!-- BLUE BACKGROUND -->
+          <rect width="512" height="512" fill="#1e90ff"/>
+
+          <!-- BODY -->
+          <path fill="#212121"
+            d="M 251 17 C 178 17 122 53 119 149 C 116 245 134 291 30 406 C 0 444 0 512 0 512 L 512 512 L 512 435 C 504 425 497 415 488 406 C 379 285 383 245 383 149 C 382 52 323 17 251 17 z" />
+
+          <!-- BELLY -->
+          <ellipse cx="256" cy="400" rx="180" ry="130" fill="#fff"/>
+
+          <!-- EYES -->
+          <ellipse cx="200" cy="200" rx="45" ry="55" fill="#fff"/>
+          <ellipse cx="310" cy="200" rx="45" ry="55" fill="#fff"/>
+
+          <!-- PUPILS -->
+          <circle id="pupilL" cx="200" cy="200" r="15" fill="black"/>
+          <circle id="pupilR" cx="310" cy="200" r="15" fill="black"/>
+
+          <!-- BEAK -->
+          <polygon points="180,260 330,260 256,320" fill="#ffbc21"/>
+
+          <g id="sunglasses">
+            <rect x="150" y="165" width="90" height="60" rx="15" fill="#000"/>
+            <rect x="270" y="165" width="90" height="60" rx="15" fill="#000"/>
+            <rect x="240" y="185" width="30" height="20" fill="#000"/>
+          </g>
+         
+        </svg>
+      </div>
+        </div>
+
+        <h1 class="profile-name">Xiaogeng Xu</h1>
+
+        <p class="profile-traits">Software Engnieer</p>
+
+        <p class="profile-description">
+          Software Engnieer<br />
+          
+        </p>
+
+        <a class="primary-action-button" href="#">More Infomation</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const svg = document.getElementById("tuxSvg");
+    const pupilL = document.getElementById("pupilL");
+    const pupilR = document.getElementById("pupilR");
+
+    const eyes = [
+      { el: pupilL, baseX: 200, baseY: 200 },
+      { el: pupilR, baseX: 310, baseY: 200 }
+    ];
+
+    document.addEventListener("mousemove", (e) => {
+      const rect = svg.getBoundingClientRect();
+
+      const svgX = ((e.clientX - rect.left) / rect.width) * 512;
+      const svgY = ((e.clientY - rect.top) / rect.height) * 512;
+
+      eyes.forEach(eye => {
+        const dx = svgX - eye.baseX;
+        const dy = svgY - eye.baseY;
+
+        const angle = Math.atan2(dy, dx);
+        const max = 10;
+
+        const x = Math.cos(angle) * max;
+        const y = Math.sin(angle) * max;
+
+        eye.el.setAttribute("cx", eye.baseX + x);
+        eye.el.setAttribute("cy", eye.baseY + y);
+      });
+    });
+
+    const themeButton = document.querySelector(".theme-toggle-button");
+
+    // check saved preference
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+    } else if (savedTheme === "light") {
+      document.body.classList.remove("dark-mode");
+    } else {
+      // fallback to system
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add("dark-mode");
+      }
+    }
+
+    // toggle button
+    themeButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+
+      // save preference
+      if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
+</script>
+
+</body>
+</html>
