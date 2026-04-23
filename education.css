@@ -1,0 +1,471 @@
+/* education.css */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f4;
+  color: #111827;
+}
+
+.education-page {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+/* floating nav */
+.education-navigation {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.education-navigation-link {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-weight: 600;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.education-navigation-link:hover {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #93c5fd;
+  transform: translateY(-1px);
+}
+
+.education-navigation-link--active {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #93c5fd;
+}
+
+/* every section fills one window */
+.education-overview-section,
+.coursework-section {
+  min-height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 24px 32px;
+  box-sizing: border-box;
+}
+
+/* overview */
+.education-overview-section {
+  flex-direction: column;
+  gap: 24px;
+}
+
+.education-overview-card {
+  width: min(760px, 100%);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.education-record {
+  padding: 56px 48px;
+  text-align: center;
+}
+
+.education-record + .education-record {
+  border-top: 1px solid #e5e7eb;
+}
+
+.education-school-name {
+  font-size: clamp(30px, 5vw, 40px);
+  line-height: 1.15;
+  margin: 0 0 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.education-school-description {
+  font-size: clamp(18px, 2.4vw, 22px);
+  line-height: 1.8;
+  color: #6b7280;
+  margin: 0;
+}
+
+.education-scroll-hint {
+  margin: 0;
+  font-size: 16px;
+  color: #9ca3af;
+  letter-spacing: 0.02em;
+  animation: floatHint 1.6s ease-in-out infinite;
+}
+
+@keyframes floatHint {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+  100% { transform: translateY(0); }
+}
+
+/* coursework shared layout */
+.coursework-layout {
+  width: min(1120px, 100%);
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+}
+
+/* UCSD theme */
+.coursework-section--ucsd {
+  background: linear-gradient(180deg, #f6f8fc 0%, #eef5ff 100%);
+}
+
+.coursework-section--ucsd .coursework-course-list-card,
+.coursework-section--ucsd .coursework-course-detail-card {
+  background: #ffffff;
+  border: 1px solid #d9e2f2;
+  box-shadow: 0 14px 32px rgba(12, 78, 163, 0.08);
+}
+
+.coursework-section--ucsd .coursework-school-title,
+.coursework-section--ucsd .coursework-course-name {
+  color: #0f172a;
+}
+
+.coursework-section--ucsd .coursework-course-code {
+  color: #0c4ea3;
+}
+
+.coursework-section--ucsd .coursework-course-description {
+  color: #475569;
+}
+
+.coursework-section--ucsd .coursework-course-button {
+  background: #fff8db;
+  color: #5b6472;
+  border: 1px solid transparent;
+}
+
+.coursework-section--ucsd .coursework-course-button:hover,
+.coursework-section--ucsd .coursework-course-button--active {
+  background: #eef5ff;
+  color: #0c4ea3;
+  border-color: #9ec5ff;
+}
+
+/* CCSF theme */
+.coursework-section--ccsf {
+  background: linear-gradient(180deg, #f7f4f4 0%, #ececec 100%);
+}
+
+.coursework-section--ccsf .coursework-course-list-card,
+.coursework-section--ccsf .coursework-course-detail-card {
+  background: #ffffff;
+  border: 1px solid #d8caca;
+  box-shadow: 0 14px 32px rgba(120, 0, 0, 0.09);
+}
+
+.coursework-section--ccsf .coursework-school-title,
+.coursework-section--ccsf .coursework-course-name {
+  color: #111111;
+}
+
+.coursework-section--ccsf .coursework-course-code {
+  color: #b91c1c;
+}
+
+.coursework-section--ccsf .coursework-course-description {
+  color: #4b5563;
+}
+
+.coursework-section--ccsf .coursework-course-button {
+  background: #f5f5f5;
+  color: #555555;
+  border: 1px solid transparent;
+}
+
+.coursework-section--ccsf .coursework-course-button:hover,
+.coursework-section--ccsf .coursework-course-button--active {
+  background: #fff1f1;
+  color: #b91c1c;
+  border-color: #f1aaaa;
+}
+
+/* cards */
+.coursework-course-list-card,
+.coursework-course-detail-card {
+  border-radius: 24px;
+}
+
+.coursework-course-list-card {
+  padding: 28px 20px;
+}
+
+.coursework-school-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.coursework-course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coursework-course-button {
+  width: 100%;
+  text-align: left;
+  border-radius: 16px;
+  padding: 16px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.coursework-course-button:hover {
+  transform: translateY(-1px);
+}
+
+.coursework-course-detail-card {
+  padding: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.coursework-course-code {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.coursework-course-name {
+  /* font-size: clamp(28px, 4vw, 40px); */
+  font-size: 14px;
+  line-height: 1.15;
+  margin: 0 20px 20px;
+}
+
+.coursework-course-description {
+  /* font-size: clamp(18px, 2vw, 22px); */
+  line-height: 1.8;
+  margin: 0;
+}
+
+.coursework-course-title-block {
+  display:flex;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .coursework-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .coursework-course-detail-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .education-page {
+    scroll-snap-type: y proximity;
+  }
+
+  .education-navigation {
+    top: 16px;
+    width: calc(100% - 32px);
+    flex-wrap: wrap;
+  }
+
+  .education-overview-section,
+  .coursework-section {
+    padding: 110px 16px 24px;
+  }
+
+  .education-record {
+    padding: 40px 24px;
+  }
+
+  .coursework-course-detail-card {
+    padding: 24px;
+  }
+}
+
+.education-greeting {
+  padding: 28px 40px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafafa;
+  text-align: center;
+}
+
+.education-greeting-text {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #6b7280;
+}
+
+/* grid layout inside overview */
+.education-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 24px;
+}
+
+/* individual school card */
+.education-school-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 28px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* hover effect (Apple-style subtle lift) */
+.education-school-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+}
+
+.education-school-card-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #111827;
+}
+
+.education-school-card-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #6b7280;
+}
+
+/* responsive */
+@media (max-width: 640px) {
+  .education-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.education-school-logo {
+  width: 40px;
+  height: 40px;
+
+  /* keep aspect ratio */
+  object-fit: contain;
+
+  /* prevent stretching weird logos */
+  max-width: 100%;
+  max-height: 100%;
+
+  /* optional: make them visually balanced */
+  padding: 4px;
+
+  /* optional: subtle background for contrast */
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+
+/* LEFT: department buttons */
+.coursework-department-button {
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: all 0.25s ease;
+}
+
+.coursework-department-button:hover {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #93c5fd;
+}
+
+.coursework-department-button--active {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #93c5fd;
+}
+
+/* RIGHT: course blocks */
+.coursework-course-block {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.coursework-course-block:last-child {
+  border-bottom: none;
+}
+
+.coursework-course-list-card {
+  height: 500px;        /* adjust as needed */
+  overflow-y: auto;     /* enable vertical scrolling */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+
+}
+
+.coursework-course-list-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.coursework-course-list-card::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.coursework-course-detail-card {
+  height: 500px;
+  overflow-y: auto;     /* enable vertical scrolling */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.coursework-course-detail-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.coursework-course-detail-card::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}

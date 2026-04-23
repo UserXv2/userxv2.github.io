@@ -1,0 +1,62 @@
+<!-- education.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Education</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="education.css" />
+</head>
+<body>
+  <main class="education-page">
+    <nav class="top-navigation">
+      <a href="https://userxv2.github.io/" class="navigation-link navigation-link--active">Home</a>
+      <a href="#" class="navigation-link">Others</a>
+    </nav>
+
+    <button class="theme-toggle-button" aria-label="switch">☼</button>
+
+    <nav class="education-navigation">
+      <a href="#" class="education-navigation-link education-navigation-link--active">Education</a>
+      <a href="#" class="education-navigation-link">Work</a>
+      <a href="#" class="education-navigation-link">Personal</a>
+    </nav>
+
+    <section class="education-overview-section">
+      <div class="education-greeting">
+        <p class="education-greeting-text" id="educationGreeting"></p>
+      </div>
+      <div class="education-overview-card" id="educationOverviewCard">
+      </div>
+      <p class="education-scroll-hint">Scroll down to read more</p>
+    </section>
+
+    <section class="coursework-section coursework-section--ucsd">
+      <div class="coursework-layout">
+        <aside class="coursework-course-list-card">
+          <h2 class="coursework-school-title" id="ucsdSchoolTitle"></h2>
+          <div id="ucsdCourseList"></div>
+        </aside>
+
+        <section class="coursework-course-detail-card" id="ucsdCourseDetail"></section>
+        <p class="education-scroll-hint">Scroll down to read more</p>
+      </div>
+      
+    </section>
+
+    <section class="coursework-section coursework-section--ccsf">
+      <div class="coursework-layout">
+        <aside class="coursework-course-list-card">
+          <h2 class="coursework-school-title" id="ccsfSchoolTitle"></h2>
+          <div id="ccsfCourseList"></div>
+        </aside>
+
+        <section class="coursework-course-detail-card" id="ccsfCourseDetail"></section>
+      </div>
+    </section>
+  </main>
+
+  <script src="education.js"></script>
+</body>
+</html>
